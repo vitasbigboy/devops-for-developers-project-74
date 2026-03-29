@@ -2,8 +2,8 @@ version: "3.8"
 
 services:
   app:
-    build: .
-    container_name: js-fastify-blog
-    volumes:
-      - ./app:/app
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+    image: vitasbigboy/devops-for-developers-project-74
     command: make test
