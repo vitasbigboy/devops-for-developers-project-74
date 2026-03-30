@@ -10,7 +10,11 @@ services:
     ports:
       - "8080:8080"
     command: make dev
-
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
   caddy:
     image: caddy:latest
     ports:

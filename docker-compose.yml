@@ -6,4 +6,20 @@ services:
       context: .
       dockerfile: Dockerfile.production
     image: vitasbigboy/devops-for-developers-project-74
-    command: make test
+    # command: make test 
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
