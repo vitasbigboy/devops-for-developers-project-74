@@ -46,6 +46,4 @@ docker-ci:
 	docker-compose -f docker-compose.yml run --rm app make test
 	docker-compose -f docker-compose.yml down
 
-ci: docker-ci
-
-ci: docker-test
+ci: test
